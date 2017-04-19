@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+		id          = "WSEI-APP"
+        version     = "1.0.0" >
+
+    <name>World Tracker</name>
+    <description>Track your parcel by our World Tracker App</description>
+    <author href="http://xyz.com" email="chechelskii@gmail.com">
+		J. Chechelski, M. Kapała
+	</author>
+	<platform name="android" />
+	
+	<plugin name="cordova-plugin-device" spec="~1.1.4" />
+	<plugin name="cordova-plugin-dialogs" spec="~1.3.1" />
+	<plugin name="cordova-plugin-network-information" spec="~1.3.2" />
+
+</widget>
