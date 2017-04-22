@@ -68,7 +68,7 @@ function track() {
         }
     }
     xhr.send();
-     document.getElementById("status").innerHTML = 'szukam statusu...';
+     document.getElementById("show").innerHTML = 'szukam statusu...';
 }
     
 }
