@@ -32,6 +32,9 @@ function onDeviceReady() {
         if(xhr.readyState == 4 && xhr.status == 200) {
             document.getElementById('status').innerHTML = xhr.responseText;
             track();
+        } else {
+            document.getElementById('status').innerHTML = '';
+            track();
         }
     }
     
