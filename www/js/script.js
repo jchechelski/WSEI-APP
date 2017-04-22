@@ -10,19 +10,11 @@ function init() {
 
 
 function onDeviceReady() {
-    
+    navigator.notification.alert('Dzialam');
     checkConnection(); // internet
-    get_tracking(); // wyslanie trackingu na nasz serwer metoda POST
-    
-}
-
-
-
-
-// pobranie i wyslanie trackingu na nasz serwer - metoda post, CORS działa
-var track_button = document.getElementById('track');
-var slug = 'dhl';
-function get_tracking() {
+   
+    var track_button = document.getElementById('track');
+    var slug = 'dhl';
     track_button.addEventListener('click', function() {
     
     var xhr = new XMLHttpRequest();
@@ -46,10 +38,15 @@ function get_tracking() {
     xhr.send(data);
     document.getElementById("status").innerHTML = 'szukam...';
     
- 
     });
     
 }
+
+
+
+
+    
+
 
 // funckcja do odbierania danych o przesylce
 function track() {
