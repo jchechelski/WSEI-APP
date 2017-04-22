@@ -20,41 +20,62 @@ function onDeviceReady() {
 
 
 // pobranie i wyslanie trackingu na nasz serwer - metoda post, CORS działa
+var track_button = document.getElementById('track');
+var slug = 'dhl';
 function get_tracking() {
-    
-    var track_button = document.getElementById('track');
-
     track_button.addEventListener('click', function() {
     
     var xhr = new XMLHttpRequest();
     
-    var url = 'http://zeenek.webd.pl/aftership2/xhr.php';
-        //var url = 'https://api.aftership.com/v4/trackings/';
+    var url = 'http://zeenek.webd.pl/aftership2/lib/test/xhr.php';
     
-    var t_number = document.getElementById('tracking_number').value;
+    t_number = document.getElementById('tracking_number').value;
     
     var data = 'track_number='+t_number;
     
     xhr.open('POST', url, true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        //xhr.setRequestHeader('Content-Type', 'application/json');
-        //xhr.setRequestHeader('aftership-api-key', '07183679-df7c-4c64-b7d5-4cef43e0deca');
     
     xhr.onreadystatechange = function() {
         if(xhr.readyState == 4 && xhr.status == 200) {
             document.getElementById('status').innerHTML = xhr.responseText;
+            track();
         }
     }
     
     xhr.send(data);
-        //xhr.send("tracking_number=8912133414");
-    document.getElementById("status").innerHTML = 'szukam....';
+    document.getElementById("status").innerHTML = 'szukam...';
     
+ 
+    });
     
-    
-});
 }
 
+// funckcja do odbierania danych o przesylce
+function track() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.aftership.com/v4/trackings/'+slug+'/'+t_number, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('aftership-api-key', '07183679-df7c-4c64-b7d5-4cef43e0deca');
+
+    xhr.onload = function() {
+        if(xhr.status === 200) {
+            console.log(' works? : ' + xhr.responseText);
+            
+            var myObj = JSON.parse(xhr.responseText);
+            var carrier = myObj.data.tracking.slug;
+            var tag = myObj.data.tracking.tag;
+            
+            var status = 'Dostawca: '+carrier+', Stan: '+tag;
+            document.getElementById('show').innerHTML = status;
+        }
+        else {
+            console.log('DOESN NOT WORK!' + xhr.status);
+        }
+    }
+    xhr.send();
+    
+}
 
 
 
