@@ -40,14 +40,11 @@ function onDeviceReady() {
     
     });
     
-}
-
-
-
-
     
-
-
+    
+    
+    
+    
 // funckcja do odbierania danych o przesylce
 function track() {
     var xhr = new XMLHttpRequest();
@@ -71,8 +68,17 @@ function track() {
         }
     }
     xhr.send();
+     document.getElementById("status").innerHTML = 'szukam statusu...';
+}
     
 }
+
+
+
+
+    
+
+
 
 
 
