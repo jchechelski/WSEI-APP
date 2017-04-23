@@ -15,7 +15,7 @@
            </div>
             <div data-role="content" class="line">
                 <a href="#szukaj" data-role="button" data-transition="flip" data-mini="false" data-inline="false" data-iconpos="notext">SZUKAJ PRZESYŁKI</a>
-                <a href="#historia" data-role="button" data-transition="flip" data-mini="false" data-inline="false" data-iconpos="notext">HISTORIA</a>
+                <a href="#historia" data-role="button" data-transition="flip" data-mini="false" data-inline="false" data-iconpos="notext" id="historiaLink">HISTORIA</a>
                 <a href="#oczekujace" data-role="button" data-transition="flip" data-mini="false" data-inline="false" data-iconpos="notext" id="oczekujaceLink">OCZEKUJĄCE</a>
                 <a href="#dostarczone" data-role="button" data-transition="flip" data-mini="false" data-inline="false" data-iconpos="notext" id ="dostarczoneLink">DOSTARCZONE</a>
             </div>
@@ -67,6 +67,9 @@
             <div data-role="header" class="headerClass">
                <h1>World Tracker</h1>
             </div>
+            <h1 class="h1Top">Ostatnio szukane:</h1>
+            <div data-role="content" id="pokazHist"></div>
+            
             <div data-role="footer" data-position="fixed">
                 <a href="#home" data-role="button" data-transition="flip" data-inline="false" data-iconpos="notext" class="wstecz">WSTECZ</a>
             </div>
@@ -75,6 +78,8 @@
             <div data-role="header" class="headerClass">
                <h1>World Tracker</h1>
             </div>
+            
+            <h1 class="h1Top">Oczekujące</h1>
             <div data-role="content" id="pokazOczek">
                 
             </div>
@@ -86,6 +91,8 @@
             <div data-role="header" class="headerClass">
                <h1>World Tracker</h1>
             </div>
+            
+            <h1 class="h1Top">Dostarczone:</h1>
             <div data-role="content" id="pokazDost">
                 
             </div>

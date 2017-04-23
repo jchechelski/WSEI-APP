@@ -70,7 +70,7 @@ function onDeviceReady() {
     }
     
     xhr.send(data);
-    document.getElementById("status").innerHTML = 'SZUKAM NUMERU... <br> <img src="img/load.gif" class="load">';
+    document.getElementById("status").innerHTML = 'SZUKAM NUMERU... <br> <img src="img/load.png" class="load">';
     
     });
     
@@ -107,13 +107,22 @@ function track() {
             showButtons.style.display = 'block';
             
             // kuniec
+            
+            
+            
+            //dodaje do local storage historie wyszukiwan
+            
+                var ile = logJSON.dost.length;
+                logJSON.his[ile] = t_number;
+                localStorage.setItem('logi', JSON.stringify(logJSON));
+            
         }
         else {
             document.getElementById('show').innerHTML = 'PODANY NUMER NIE ISTNIEJE LUB CHWILOWO NIE DOSTĘPNE';
         }
     }
     xhr.send();
-    document.getElementById('show').innerHTML = 'SZUKAM STATUSU...<br> <img src="img/load.gif" class="load">';
+    document.getElementById('show').innerHTML = 'SZUKAM STATUSU...<br> <img src="img/load.png" class="load">';
     // koniec funkcji
     
 }
@@ -133,6 +142,10 @@ var oczekujaceTab = document.getElementById('oczekujaceLink'),
     //dostarczone
 var dostarczoneTab = document.getElementById('dostarczoneLink'),
     pokazDost = document.getElementById('pokazDost');
+    
+    //historia
+var historiaTab = document.getElementById('historiaLink'),
+    pokazHist = document.getElementById('pokazHist');
     
     
     
@@ -195,6 +208,21 @@ dostarczoneTab.addEventListener('click', function() {
             sklej += JSON.parse(retrievedObject).dost[i] + '<br>'; 
         }
     pokazDost.innerHTML = sklej;
+    
+});
+    
+historiaTab.addEventListener('click', function() {
+    var ile = logJSON.his.length;
+
+    localStorage.setItem('logi', JSON.stringify(logJSON));
+    
+        var retrievedObject = localStorage.getItem('logi');
+        var sklej = '';
+        for(var i=ile-1; i>0; i--) {
+            
+            sklej += JSON.parse(retrievedObject).his[i] + '<br>'; 
+        }
+    pokazHist.innerHTML = sklej;
     
 });
 
