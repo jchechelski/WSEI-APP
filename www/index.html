@@ -9,21 +9,72 @@
 	</head>
 	<body>
 
-<!--       test form-->
-<!--
-    <form name="testForm" action="" method="">
+        
+        <div id="home" data-role="page" data-theme="b">
+           <div data-role="header" class="headerClass">
+               <h1>World Tracker</h1>
+           </div>
+            <div data-role="content" class="line">
+                <a href="#szukaj" data-role="button" data-transition="flip" data-mini="false" data-inline="false" data-iconpos="notext">SZUKAJ PRZESYŁKI</a>
+                <a href="#historia" data-role="button" data-transition="flip" data-mini="false" data-inline="false" data-iconpos="notext">HISTORIA</a>
+                <a href="#oczekujace" data-role="button" data-transition="flip" data-mini="false" data-inline="false" data-iconpos="notext">OCZEKUJĄCE</a>
+                <a href="#dostarczone" data-role="button" data-transition="flip" data-mini="false" data-inline="false" data-iconpos="notext">DOSTARCZONE</a>
+            </div>
+        </div>
+        <div id="szukaj" data-role="page" data-theme="b">
+            <div data-role="header" class="headerClass">
+               <h1>World Tracker</h1>
+            </div>
+            <div data-role="content" class="line">
+                <h2 class="centerT">Wybierz dostawcę:</h2>
+                <img src="img/pp.jpg" alt="" class="dostawcyImg" id="poczta-polska">
+                <img src="img/dhl.png" alt="" class="dostawcyImg" id="dhl">
+                <img src="img/inpost.png" alt="" class="dostawcyImg" id="inpost">
+                <img src="img/chinapost.png" alt="" class="dostawcyImg" id="china-post">
+            </div>
+            <div data-role="footer" data-position="fixed">
+               <a href="#szukaj2" data-role="button" data-transition="flip" data-inline="false" data-iconpos="notext" class="wstecz" id="dalej">DALEJ</a>
+                <a href="#home" data-role="button" data-transition="flip" data-inline="false" data-iconpos="notext" class="wstecz">WSTECZ</a>
+            </div>
+        </div>
+        
+        <div id="szukaj2" data-role="page" data-theme="b">
+            <div data-role="header" class="headerClass">
+               <h1>World Tracker</h1>
+            </div> 
+            
+            <div data-role="content" class="line">
+                
+                    <form name="testForm" action="" method="">
         Tracking Number: <input type="text" name="tracking_number" id="tracking_number" /><br />
         <input type="button" value="TRACK" id="track" />
     </form>
     <div id="status"></div>
     <div id="show"></div>
--->
+                
+            </div>
+            
+            
+            <div data-role="footer" data-position="fixed">
+                <a href="#szukaj" data-role="button" data-transition="flip" data-inline="false" data-iconpos="notext" class="wstecz">WSTECZ</a>
+            </div>
+        </div>
         
-        <div id="home" data-role="page"></div>
-        <div id="szukaj" data-role="page"></div>
-        <div id="historia" data-role="page"></div>
-        <div id="oczekujace" data-role="page"></div>
-        <div id="dostarczone" data-role="page"></div>
+        <div id="historia" data-role="page" data-theme="b">
+            <div data-role="header" class="headerClass">
+               <h1>World Tracker</h1>
+            </div>
+        </div>
+        <div id="oczekujace" data-role="page" data-theme="b">
+            <div data-role="header" class="headerClass">
+               <h1>World Tracker</h1>
+            </div>
+        </div>
+        <div id="dostarczone" data-role="page" data-theme="b">
+            <div data-role="header" class="headerClass">
+               <h1>World Tracker</h1>
+            </div>
+        </div>
         
         
         

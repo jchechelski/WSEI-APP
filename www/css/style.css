@@ -1,0 +1,33 @@
+.headerClass {
+    
+}
+
+.line {
+    border-top: 1px solid #ad2525;
+}
+
+.centerT {
+    text-align: center;
+}
+
+.wstecz {
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+    margin: 0 auto;
+}
+
+.dostawcyImg {
+    width: 80%;
+    height: 80px;
+    display: block;
+    margin: 10px auto;
+}
+
+#dalej {
+    display: none;
+    background: #7b2424;
+    line-height: 30px;
+}

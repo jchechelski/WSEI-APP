@@ -10,11 +10,41 @@ function init() {
 
 
 function onDeviceReady() {
-    navigator.notification.alert('Dzialam');
     checkConnection(); // internet
-   
+    
+    
+    
+    
+    
+    
+    
+    
+         // pobieramy i zaznaczamy wybranego dostawce
+    var img = document.getElementsByTagName('img');
+    var dalej = document.getElementById('dalej');
+    for(var i=0; i<img.length; i++){
+        img[i].addEventListener('click', function() {
+            slug = this.id;
+            dalej.style.display = 'block';
+            
+            
+            for(var z=0; z<img.length; z++){
+                img[z].style.border = 'none';
+                img[z].style.borderRadius = '0';
+            }
+            
+            this.style.border = '10px solid white';
+            this.style.borderRadius = '20px';
+        });
+    } 
+    
+    // koniec 
+    
+    
+    
+    
     var track_button = document.getElementById('track');
-    var slug = 'dhl';
+    slug = '';
     track_button.addEventListener('click', function() {
     
     var xhr = new XMLHttpRequest();
@@ -46,9 +76,7 @@ function onDeviceReady() {
     
     
     
-    
-    
-// funckcja do odbierania danych o przesylce
+    // funckcja do odbierania danych o przesylce
 function track() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://api.aftership.com/v4/trackings/'+slug+'/'+t_number, true);
@@ -62,28 +90,33 @@ function track() {
             var myObj = JSON.parse(xhr.responseText);
             var carrier = myObj.data.tracking.slug;
             var tag = myObj.data.tracking.tag;
+            // sprawdzenie punktow
+            var check_ile = myObj.data.tracking.checkpoints.length;
+            var check = myObj.data.tracking.checkpoints;
+            wiadomosc = '';
+            for(var i=0; i<check_ile; i++) {
+                wiadomosc += 'Data: '+check[i].created_at+'<br>Dostawca: '+check[i].slug+'<br>Status :'+check[i].tag+'<br>Kraj: '+check[i].country_name+'<br>Wiadomość: '+check[i].message+'<hr>';
+            }
             
-            var status = 'Dostawca: '+carrier+', Stan: '+tag;
-            document.getElementById('show').innerHTML = status;
+            document.getElementById('show').innerHTML = wiadomosc;
+            // kuniec
         }
         else {
             console.log('DOESN NOT WORK!' + xhr.status);
         }
     }
     xhr.send();
-     document.getElementById("show").innerHTML = 'szukam statusu...';
-}
+    document.getElementById('show').innerHTML = 'szukam statusu...';
+    // koniec funkcji
     
 }
-
-
-
-
+   
     
 
+}
 
 
-
+        
 
 
 // sprawdzamy połaczenie z internetem
