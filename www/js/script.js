@@ -228,6 +228,12 @@ historiaTab.addEventListener('click', function() {
 
     // koniec JSON storage
     
+    
+    // funkcja do usuwanie danych ze storage
+    
+
+    
+    
 
 }
 
