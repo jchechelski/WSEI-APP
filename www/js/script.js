@@ -52,7 +52,7 @@ function onDeviceReady() {
     
     var url = 'http://zeenek.webd.pl/aftership2/lib/test/xhr.php';
     
-    t_number = document.getElementById('tracking_number').value;
+    t_number = document.getElementById('tracking_number').value.toUpperCase();
     
     var data = 'track_number='+t_number;
     
