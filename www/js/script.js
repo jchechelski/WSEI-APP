@@ -70,7 +70,7 @@ function onDeviceReady() {
     }
     
     xhr.send(data);
-    document.getElementById("status").innerHTML = 'SZUKAM NUMERU...';
+    document.getElementById("status").innerHTML = 'SZUKAM NUMERU... <br> <img src="img/load.gif" class="load">';
     
     });
     
@@ -95,11 +95,17 @@ function track() {
             var check_ile = myObj.data.tracking.checkpoints.length;
             var check = myObj.data.tracking.checkpoints;
             wiadomosc = '';
-            for(var i=0; i<check_ile; i++) {
-                wiadomosc += 'Data: '+check[i].checkpoint_time+'<br>Dostawca: '+check[i].slug+'<br>Status :'+check[i].tag+'<br>Kraj: '+check[i].country_name+'<br>Wiadomość: '+check[i].message+'<hr>';
+            for(var i=check_ile-1; i>0; i--) {
+                var czas = check[i].checkpoint_time; 
+                var kraj = (check[i].country_name) ? check[i].country_name : 'Nieznany';
+                wiadomosc += 'Data: '+czas.slice(0,10)+'<br>Godzina: '+czas.slice(11,16)+'<br>Dostawca: '+check[i].slug+'<br>Status :'+check[i].tag+'<br>Kraj: '+kraj+'<br>Wiadomość: '+check[i].message+'<hr>';
             }
             
             document.getElementById('show').innerHTML = wiadomosc;
+            
+            var showButtons = document.getElementById('showButtons');
+            showButtons.style.display = 'block';
+            
             // kuniec
         }
         else {
@@ -107,11 +113,92 @@ function track() {
         }
     }
     xhr.send();
-    document.getElementById('show').innerHTML = 'SZUKAM STATUSU';
+    document.getElementById('show').innerHTML = 'SZUKAM STATUSU...<br> <img src="img/load.gif" class="load">';
     // koniec funkcji
     
 }
    
+    
+    
+    
+    // JSON storage
+    // guziki 
+var dostarczoneButton = document.getElementById('dostarczoneButton'),
+    oczekujaceButton = document.getElementById('oczekujaceButton');
+
+    //oczekujace
+var oczekujaceTab = document.getElementById('oczekujaceLink'),
+    pokazOczek = document.getElementById('pokazOczek');
+    
+    //dostarczone
+var dostarczoneTab = document.getElementById('dostarczoneLink'),
+    pokazDost = document.getElementById('pokazDost');
+    
+    
+    
+var logJSON = {
+    his : [{
+        
+    }],
+    dost : [{
+        
+    }],
+    oczek : [{
+        
+    }]
+}
+
+
+dostarczoneButton.addEventListener('click', function() {
+    var ile = logJSON.dost.length;
+    logJSON.dost[ile] = t_number;
+    localStorage.setItem('logi', JSON.stringify(logJSON));
+    alert('DODANO DO DOSTARCZONYCH');
+    
+});
+
+
+oczekujaceButton.addEventListener('click', function() {
+    var ile = logJSON.oczek.length;
+    logJSON.oczek[ile] = t_number;
+    localStorage.setItem('logi', JSON.stringify(logJSON));
+    alert('DODANO DO OCZEKUJĄCYCH');
+
+});
+  
+
+// pokazywanie
+oczekujaceTab.addEventListener('click', function() {
+    var ile = logJSON.oczek.length;
+
+    localStorage.setItem('logi', JSON.stringify(logJSON));
+    
+        var retrievedObject = localStorage.getItem('logi');
+        var sklej = '';
+        for(var i=ile-1; i>0; i--) {
+            
+            sklej += JSON.parse(retrievedObject).oczek[i] + '<br>'; 
+        }
+    pokazOczek.innerHTML = sklej;
+    
+});
+    
+dostarczoneTab.addEventListener('click', function() {
+    var ile = logJSON.dost.length;
+
+    localStorage.setItem('logi', JSON.stringify(logJSON));
+    
+        var retrievedObject = localStorage.getItem('logi');
+        var sklej = '';
+        for(var i=ile-1; i>0; i--) {
+            
+            sklej += JSON.parse(retrievedObject).dost[i] + '<br>'; 
+        }
+    pokazDost.innerHTML = sklej;
+    
+});
+
+    // koniec JSON storage
     
 
 }

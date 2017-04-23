@@ -39,3 +39,12 @@
     background: #7b2424;
     line-height: 30px;
 }
+
+.load {
+    display: block;
+    margin: 0 auto;
+}
+
+#showButtons {
+    display: none;
+}
