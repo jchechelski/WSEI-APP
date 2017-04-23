@@ -26,6 +26,14 @@
     margin: 10px auto;
 }
 
+
+.slug_mini {
+    width: 60%;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+}
+
 #dalej {
     display: none;
     background: #7b2424;
